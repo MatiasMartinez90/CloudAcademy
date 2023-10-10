@@ -21,9 +21,9 @@ type Category struct {
 }
 
 type Cursos struct {
-	Curso_Id          int    `json:"categID"`
-	Curso_Tittle      string `json:"categName"`
-	Curso_Description string `json:"categPath"`
+	Curso_Id          int    `json:"Curso_Id"`
+	Curso_Tittle      string `json:"Curso_Tittle"`
+	Curso_Description string `json:"Curso_Description"`
 }
 
 type Product struct {

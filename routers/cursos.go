@@ -18,11 +18,11 @@ func InsertCursos(body string, User string) (int, string) {
 	}
 
 	if len(t.Curso_Tittle) == 0 {
-		return 400, "Debe especificar el Nombre (Title) de la categoria"
+		return 400, "Debe especificar el Nombre (Title) del curso"
 	}
 
 	if len(t.Curso_Description) == 0 {
-		return 400, "Debe especificar el Path (Ruta) de la categoria"
+		return 400, "Debe especificar la descripcion (Ruta) del curso"
 	}
 
 	isAdmin, msg := bd.UserIsAdmin(User)
