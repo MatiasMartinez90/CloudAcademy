@@ -20,12 +20,6 @@ type Category struct {
 	CategPath string `json:"categPath"`
 }
 
-type Cursos struct {
-	Curso_Id          int    `json:"Curso_Id"`
-	Curso_Tittle      string `json:"Curso_Tittle"`
-	Curso_Description string `json:"Curso_Description"`
-}
-
 type Product struct {
 	ProdId          int     `json:"prodID"`
 	ProdTitle       string  `json:"prodTitle"`
@@ -38,6 +32,19 @@ type Product struct {
 	ProdPath        string  `json:"prodPath"`
 	ProdSearch      string  `json:"prodSearch,omitempty"`
 	ProdCategPath   string  `json:"prodCategPath,omitempty"`
+}
+
+type Cursos struct {
+	Curso_Id          int     `json:"Curso_Id"`
+	Curso_Tittle      string  `json:"Curso_Tittle"`
+	Curso_Description string  `json:"Curso_Description"`
+	Curso_CreatedAt   string  `json:"Curso_CreatedAt"`
+	Curso_Updated     string  `json:"Curso_Updated"`
+	Curso_Price       float64 `json:"Curso_Price,omitempty"`
+	Curso_CategoryId  int     `json:"Curso_CategoryId"`
+	Curso_Path        string  `json:"Curso_Path"`
+	CursoSearch       string  `json:"cursoSearch,omitempty"`
+	CursoCategPath    string  `json:"cursoCategPath,omitempty"`
 }
 
 type ProductResp struct {

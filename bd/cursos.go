@@ -3,13 +3,16 @@ package bd
 import (
 	"database/sql"
 	"fmt"
+	"strconv"
+
+	"github.com/CloudAcademy/tools"
 
 	//"strconv"
 	"github.com/CloudAcademy/models"
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func InsertCursos(c models.Cursos) (int64, error) {
+func InsertCursos(p models.Cursos) (int64, error) {
 	fmt.Println("Inicializando funcion  db.InsertCursos")
 
 	err := DbConnect()
@@ -19,12 +22,48 @@ func InsertCursos(c models.Cursos) (int64, error) {
 
 	defer Db.Close()
 
-	sentencia := "INSERT INTO cursos2 (Curso_Tittle, Curso_Description ) Values('" + c.Curso_Tittle + "','" + c.Curso_Description + "')"
+	sentencia := "INSERT INTO cursos (Curso_Tittle"
 
-	fmt.Println("ejecutnado sentencia")
-	fmt.Println(sentencia)
+	if len(p.Curso_Description) > 0 {
+		sentencia += ", Curso_Description"
+	}
+
+	if p.Curso_Price > 0 {
+		sentencia += ", Curso_Price"
+	}
+
+	if p.Curso_CategoryId > 0 {
+		sentencia += ", Curso_CategoryId"
+	}
+
+	if len(p.Curso_Path) > 0 {
+		sentencia += ", Curso_Path"
+	}
+
+	sentencia += ") Values ('" + tools.EscapeString(p.Curso_Tittle) + "'"
+
+	if len(p.Curso_Description) > 0 {
+		sentencia += ", '" + tools.EscapeString(p.Curso_Description) + "'"
+	}
+
+	if p.Curso_Price > 0 {
+		sentencia += ", " + strconv.FormatFloat(p.Curso_Price, 'e', -1, 64)
+	}
+
+	if p.Curso_CategoryId > 0 {
+		sentencia += ", " + strconv.Itoa(p.Curso_CategoryId)
+	}
+
+	if len(p.Curso_Path) > 0 {
+		sentencia += ", '" + tools.EscapeString(p.Curso_Path) + "'"
+	}
+
+	sentencia += ")"
+
 	var result sql.Result
 
+	fmt.Println("Vamos a ejecutar la sentancia: ")
+	fmt.Println(sentencia)
 	result, err = Db.Exec(sentencia)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -39,5 +78,4 @@ func InsertCursos(c models.Cursos) (int64, error) {
 
 	fmt.Println("Insert Cursos > Ejecucion Exitosa")
 	return LastInsertId, nil
-
 }
