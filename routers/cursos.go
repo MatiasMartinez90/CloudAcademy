@@ -21,7 +21,7 @@ func InsertCursos(body string, User string) (int, string) {
 		return 400, "Error en los datos recibidos" + err.Error()
 	}
 
-	if len(t.ProdTitle) == 0 {
+	if len(t.Curso_Tittle) == 0 {
 		return 400, "Debe especificar el Nombre (title) del producto "
 	}
 
