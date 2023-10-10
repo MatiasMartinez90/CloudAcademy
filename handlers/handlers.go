@@ -114,6 +114,15 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 	return 400, "Method Invalid ProcesoCategory"
 }
 
+func ProcesoCursos(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+
+	switch method {
+	case "POST":
+		return routers.InsertCursos(body, user)
+	}
+	return 400, "Method Invalid ProcesoCurso"
+}
+
 /*func ProcesoStocks(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoStocks")
 

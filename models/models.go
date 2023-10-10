@@ -20,6 +20,12 @@ type Category struct {
 	CategPath string `json:"categPath"`
 }
 
+type Cursos struct {
+	Curso_Id          int    `json:"categID"`
+	Curso_Tittle      string `json:"categName"`
+	Curso_Description string `json:"categPath"`
+}
+
 type Product struct {
 	ProdId          int     `json:"prodID"`
 	ProdTitle       string  `json:"prodTitle"`
