@@ -24,6 +24,8 @@ func Manejadores(path string, method string, body string, headers map[string]str
 	switch path[1:5] {
 	case "cate":
 		return ProcesoCategory(body, path, method, user, idn, request)
+	case "curs":
+		return ProcesoCursos(body, path, method, user, idn, request)
 
 	}
 
